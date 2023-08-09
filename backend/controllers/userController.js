@@ -5,11 +5,11 @@ const bcrypt = require("bcryptjs");
 
 /**
  * @desc   Get all users
- * @route  Get /api/users
+ * @route  Get /api/user
  * @access PROTECTED - admin
  */
 const getUsers = asyncHandler(async (req, res) => {
-  const user = await User.find();
+  const user = await User.find().select({ password: 0, __v: 0 });
   res.status(200).json(user);
 });
 
@@ -22,12 +22,14 @@ const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
+    res.status(400);
     throw new Error("Please add all fields");
   }
 
   const userExists = await User.findOne({ email });
 
   if (userExists) {
+    res.status(400);
     throw new Error("User exists, Please login");
   }
 
@@ -51,6 +53,52 @@ const registerUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id, user.role),
     });
   } else {
+    res.status(400);
+    throw new Error("Invalid data");
+  }
+});
+
+/**
+ * @desc   Register admin
+ * @route  POST /api/user/admin
+ * @access PROTECTED - SUPERUSER
+ */
+const registerAdmin = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    res.status(400);
+    throw new Error("Please add all fields");
+  }
+
+  const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    res.status(400);
+    throw new Error("User exists, Please login");
+  }
+
+  // hash the password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const user = await User.create({
+    name: name,
+    email: email,
+    password: hashedPassword,
+    role: "Admin",
+  });
+
+  if (user) {
+    res.status(201).json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      token: generateToken(user._id, user.role),
+    });
+  } else {
+    res.status(400);
     throw new Error("Invalid data");
   }
 });
@@ -66,7 +114,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await bcrypt.compare(password, user.password))) {
-    res.json({
+    res.status(200).json({
       _id: user.id,
       name: user.name,
       email: user.email,
@@ -150,4 +198,5 @@ module.exports = {
   loginUser,
   updateUser,
   deleteUser,
+  registerAdmin,
 };
