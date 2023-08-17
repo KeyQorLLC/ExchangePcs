@@ -4,22 +4,24 @@ interface CardProps {
   id: string;
   imageUrl: string;
   condition: string;
-  member: string;
   group: string;
+  member: string;
   album: string;
-  user: string;
+  version: string;
   description: string;
+  user: string;
 }
 
 const Card: React.FC<CardProps> = ({
   id,
   imageUrl,
   condition,
-  member,
   group,
+  member,
   album,
-  user,
+  version,
   description,
+  user,
 }) => {
   return (
     <div className="bg-white shadow-md p-4 rounded-md">
@@ -29,9 +31,11 @@ const Card: React.FC<CardProps> = ({
         className="w-full h-32 object-cover mb-2 rounded-md"
       />
       <h3 className="text-gray-600 mb-2">Condition: {condition}</h3>
-      <p className="text-gray-600 mb-2">Member: {member}</p>
       <p className="text-gray-600 mb-2">Group: {group}</p>
+      <p className="text-gray-600 mb-2">Member: {member}</p>
       <p className="text-gray-600 mb-2">Album: {album}</p>
+      <p className="text-gray-600 mb-2">Version: {version}</p>
+      <p className="text-gray-600 mb-2">Description: {description}</p>
       <p className="text-gray-600">Posted by: {user}</p>
     </div>
   );

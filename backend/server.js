@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.use("/api/user", require("./routes/userRoutes"));
+app.use("/api/card", require("./routes/cardRoutes"));
 
 // middleware
 app.use(errorHandler);

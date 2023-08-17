@@ -1,54 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import CardList from "./CardList";
+import SearchComponent from "../User/SearchComponent";
 
-const mockCards = [
-  {
-    id: "1",
-    imageUrl: "https://example.com/card1.jpg",
-    condition: "Mint",
-    member: "Lisa",
-    group: "BlackPink",
-    album: "Bornpink",
-    user: "User1",
-    description: "Great card",
-  },
-  {
-    id: "2",
-    imageUrl: "https://example.com/card1.jpg",
-    condition: "Mint",
-    member: "Rose",
-    group: "BlackPink",
-    album: "Bornpink",
-    user: "User1",
-    description: "Great card",
-  },
-  {
-    id: "3",
-    imageUrl: "https://example.com/card1.jpg",
-    condition: "Mint",
-    member: "Jisoo",
-    group: "BlackPink",
-    album: "Bornpink",
-    user: "User1",
-    description: "Great card",
-  },
-  {
-    id: "4",
-    imageUrl: "https://example.com/card1.jpg",
-    condition: "Mint",
-    member: "Jennie",
-    group: "BlackPink",
-    album: "Bornpink",
-    user: "User1",
-    description: "Great card",
-  },
-];
+interface SearchCriteria {
+  condition: string;
+  group: string;
+  member: string;
+  album: string;
+  version: string;
+}
 
 const CardDisPlay: React.FC = () => {
+  const [cardData, setCardData] = useState([]);
+
+  const fetchCard = async (searchCriteria: SearchCriteria) => {
+    const response = await fetch(
+      `http://localhost:5000/api/card?${
+        searchCriteria.condition === ""
+          ? ""
+          : "condition=" + searchCriteria.condition
+      }${searchCriteria.group === "" ? "" : "group=" + searchCriteria.group}${
+        searchCriteria.member === "" ? "" : "member=" + searchCriteria.member
+      }${searchCriteria.album === "" ? "" : "album=" + searchCriteria.album}${
+        searchCriteria.version === "" ? "" : "version=" + searchCriteria.version
+      }`
+    );
+    if (response.status === 200) {
+      const data = await response.json();
+      setCardData(data);
+    }
+  };
+
   return (
     <div className="container mx-auto p-8 max-h-60vh bg-gradient-to-r from-kpopPink to-kpopPurple">
-      <h1 className="text-4xl font-bold text-white mb-4">Card Display Page</h1>
-      <CardList cards={mockCards} />
+      <div className="flex justify-center">
+        <h1 className="text-4xl font-bold text-white mb-4">Find Your Star</h1>
+      </div>
+      <SearchComponent onSearch={fetchCard} />
+      <CardList cards={cardData} />
     </div>
   );
 };

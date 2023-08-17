@@ -5,11 +5,12 @@ interface CardData {
   id: string;
   imageUrl: string;
   condition: string;
-  member: string;
   group: string;
+  member: string;
   album: string;
-  user: string;
+  version: string;
   description: string;
+  user: string;
 }
 
 interface CardListProps {
@@ -24,11 +25,12 @@ const CardList: React.FC<CardListProps> = ({ cards }) => {
           id={card.id}
           imageUrl={card.imageUrl}
           condition={card.condition}
-          member={card.member}
           group={card.group}
+          member={card.member}
           album={card.album}
-          user={card.user}
+          version={card.version}
           description={card.description}
+          user={card.user}
         />
       ))}
     </div>
