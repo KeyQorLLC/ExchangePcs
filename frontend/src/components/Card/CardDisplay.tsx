@@ -18,11 +18,13 @@ const CardDisPlay: React.FC = () => {
       `http://localhost:5000/api/card?${
         searchCriteria.condition === ""
           ? ""
-          : "condition=" + searchCriteria.condition
-      }${searchCriteria.group === "" ? "" : "group=" + searchCriteria.group}${
-        searchCriteria.member === "" ? "" : "member=" + searchCriteria.member
-      }${searchCriteria.album === "" ? "" : "album=" + searchCriteria.album}${
-        searchCriteria.version === "" ? "" : "version=" + searchCriteria.version
+          : "&condition=" + searchCriteria.condition
+      }${searchCriteria.group === "" ? "" : "&group=" + searchCriteria.group}${
+        searchCriteria.member === "" ? "" : "&member=" + searchCriteria.member
+      }${searchCriteria.album === "" ? "" : "&album=" + searchCriteria.album}${
+        searchCriteria.version === ""
+          ? ""
+          : "&version=" + searchCriteria.version
       }`
     );
     if (response.status === 200) {

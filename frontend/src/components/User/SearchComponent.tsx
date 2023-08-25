@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { albumnMap, groupList, memberMap } from "./mapping";
 
 interface SearchComponentProps {
   onSearch: (criteria: SearchCriteria) => void;
@@ -49,18 +50,15 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
         <select
           className="border rounded p-1 text-kpopPurple"
           onChange={(e) =>
-            setSearchCriteria({ ...searchCriteria, member: e.target.value })
-          }
-        >
-          {/* Options for member */}
-        </select>
-        <select
-          className="border rounded p-1 text-kpopPurple"
-          onChange={(e) =>
             setSearchCriteria({ ...searchCriteria, group: e.target.value })
           }
         >
-          {/* Options for group */}
+          <option value="">Select Group</option>
+          {groupList.map((group) => (
+            <option key={group} value={group}>
+              {group}
+            </option>
+          ))}
         </select>
         <select
           className="border rounded p-1 text-kpopPurple"
@@ -68,7 +66,14 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
             setSearchCriteria({ ...searchCriteria, album: e.target.value })
           }
         >
+          <option value="">Select Album</option>
           {/* Options for album */}
+          {searchCriteria.group &&
+            albumnMap[searchCriteria.group].map((album) => (
+              <option key={album} value={album}>
+                {album}
+              </option>
+            ))}
         </select>
         <select
           className="border rounded p-1 text-kpopPurple"
@@ -76,7 +81,22 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
             setSearchCriteria({ ...searchCriteria, version: e.target.value })
           }
         >
+          <option value="">Select Version</option>
           {/* Options for version */}
+        </select>
+        <select
+          className="border rounded p-1 text-kpopPurple"
+          onChange={(e) =>
+            setSearchCriteria({ ...searchCriteria, member: e.target.value })
+          }
+        >
+          <option value="">Select Member</option>
+          {searchCriteria.group &&
+            memberMap[searchCriteria.group].map((member) => (
+              <option key={member} value={member}>
+                {member}
+              </option>
+            ))}
         </select>
         <button
           className="bg-kpopBlue text-white rounded p-1 hover:bg-kpopYellow transition-colors"
