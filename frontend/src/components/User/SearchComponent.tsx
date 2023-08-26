@@ -48,7 +48,13 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
         <select
           className="border rounded p-1 text-kpopPurple"
           onChange={(e) =>
-            setSearchCriteria({ ...searchCriteria, group: e.target.value })
+            setSearchCriteria({
+              ...searchCriteria,
+              group: e.target.value,
+              member: "",
+              album: "",
+              version: "",
+            })
           }
         >
           <option value="">Select Group</option>

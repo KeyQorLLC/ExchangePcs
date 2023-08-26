@@ -24,19 +24,21 @@ const Card: React.FC<CardProps> = ({
   user,
 }) => {
   return (
-    <div className="bg-white shadow-md p-4 rounded-md">
+    <div className="bg-white shadow-md p-4 rounded-md cursor-pointer flex flex-row hover:bg-yellow-100">
       <img
-        src={imageUrl}
+        src="testimg.jpg"
         alt={id}
-        className="w-full h-32 object-cover mb-2 rounded-md"
+        className="w-64 h-64 object-cover mb-2 rounded-md"
       />
-      <h3 className="text-gray-600 mb-2">Condition: {condition}</h3>
-      <p className="text-gray-600 mb-2">Group: {group}</p>
-      <p className="text-gray-600 mb-2">Member: {member}</p>
-      <p className="text-gray-600 mb-2">Album: {album}</p>
-      <p className="text-gray-600 mb-2">Version: {version}</p>
-      <p className="text-gray-600 mb-2">Description: {description}</p>
-      <p className="text-gray-600">Posted by: {user}</p>
+      <div className="ml-4">
+        <p className="text-gray-600 mb-2">Condition: {condition}</p>
+        <p className="text-gray-600 mb-2">Group: {group}</p>
+        <p className="text-gray-600 mb-2">Member: {member}</p>
+        <p className="text-gray-600 mb-2">Album: {album}</p>
+        <p className="text-gray-600 mb-2">Version: {version}</p>
+        <p className="text-gray-600 mb-2">Description: {description}</p>
+        <p className="text-gray-600">Posted by: {user}</p>
+      </div>
     </div>
   );
 };
