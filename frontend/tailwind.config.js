@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        kpopPink: "#FF6F9E",
+        kpopPink: "#f4a7bb",
         kpopPurple: "#A844BC",
         kpopBlue: "#2BA9FF",
         kpopYellow: "#FFCC1F",

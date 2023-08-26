@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeView from "./components/Home/HomeView";
 import AdminDashboard from "./components/Admin/Dashboard";
-import { useState, useContext, createContext } from "react";
+import { useState } from "react";
 import UserDashboard from "./components/User/Dashboard";
 
 const App: React.FC = () => {

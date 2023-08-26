@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface LoginPopupProps {
   onClose: () => void;
@@ -18,7 +17,6 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
-  const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -54,7 +52,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
   };
 
   return (
-    <div className="bg-kpopPurple p-8 rounded-md shadow-md">
+    <div className="bg-kpopPink p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-semibold text-white mb-4">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

@@ -10,7 +10,7 @@ const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   };
   return (
     <>
-      <div className="bg-gradient-to-r from-kpopPink to-kpopPurple">
+      <div className="bg-gradient-to-r from-kpopPink to-white">
         <CardDisplay />
         <button
           onClick={handleLogout}

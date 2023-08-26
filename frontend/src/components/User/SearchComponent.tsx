@@ -28,9 +28,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
 
   return (
     <div className="mb-4">
-      <h3 className="text-lg font-semibold text-kpopBlue mb-2">
-        Search Filters
-      </h3>
+      <h3 className="text-lg font-semibold text-white mb-2">Search Filters</h3>
       <div className="flex space-x-4">
         <select
           className="border rounded p-1 text-kpopPurple"

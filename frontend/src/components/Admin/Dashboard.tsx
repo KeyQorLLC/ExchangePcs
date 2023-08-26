@@ -7,12 +7,25 @@ interface User {
   role: string;
 }
 
+interface Card {
+  _id: string;
+  imageUrl: string;
+  condition: string;
+  group: string;
+  member: string;
+  album: string;
+  version: string;
+  description: string;
+  user: string;
+}
+
 interface DashboardPageProps {
   setRole: (role: string) => void;
 }
 
 const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   const [users, setUsers] = useState<User[]>([]);
+  const [cards, setCards] = useState<Card[]>([]);
   const [showDeletePopup, setShowDeletePopup] = useState<boolean>(false);
   const [userToDelete, setUserToDelete] = useState<User | null>(null);
 
@@ -29,6 +42,15 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
       setUsers(data);
     };
 
+    const fetchCard = async () => {
+      const response = await fetch("http://localhost:5000/api/card");
+      if (response.status === 200) {
+        const data = await response.json();
+        setCards(data);
+      }
+    };
+
+    fetchCard();
     fetchUsers();
   }, []);
 
@@ -73,33 +95,87 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-r from-kpopPink to-kpopPurple">
+    <div className="h-screen">
       <div className="flex items-center justify-center h-16 bg-kpopBlue text-white">
         <h1 className="ml-2 text-2xl">Admin Dashboard</h1>
       </div>
-      <div className="flex mt-4">
-        <div className="w-1/4 h-1/4 bg-kpopGray p-4 overflow-y-auto border border-black">
-          <h2 className="text-lg text-white mb-2">User List</h2>
-          <ul className="text-white">
+      <div></div>
+      <div className="flex mt-4 justify-around">
+        <div className="h-1/4 p-4 overflow-y-auto text-center">
+          <h2 className="text-lg text-black mb-2">User List</h2>
+          <table className="border-black border-solid border-2">
+            <tr className="border-black border-solid border-2">
+              <th className="border-black border-solid border-2">id</th>
+              <th className="border-black border-solid border-2">name</th>
+              <th className="border-black border-solid border-2">email</th>
+              <th className="border-black border-solid border-2">role</th>
+              <th className="border-black border-solid border-2">action</th>
+            </tr>
             {users.map((user) => (
-              <li key={user._id} className="mb-2">
-                <div className="border-b border-black pb-2">
-                  <p>id: {user._id}</p>
-                  <p>Name: {user.name}</p>
-                  <p>Email: {user.email}</p>
-                  <p>Role: {user.role}</p>
-                  <button
-                    onClick={() => handleDeleteClick(user)}
-                    className="px-4 py-2 mt-2 text-sm bg-kpopBlue text-white rounded-md shadow-md hover:bg-kpopYellow"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
+              <tr className="border-black border-solid border-2">
+                <td className="border-black border-solid border-2">
+                  {user._id}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {user.name}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {user.email}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {user.role}
+                </td>
+                <button
+                  onClick={() => handleDeleteClick(user)}
+                  className="m-2 px-4 py-2 mt-2 text-sm bg-black text-white rounded-md shadow-md hover:bg-kpopYellow"
+                  hidden={user.role === "Admin"}
+                  disabled={user.role === "Admin"}
+                >
+                  Delete
+                </button>
+              </tr>
             ))}
-          </ul>
+          </table>
         </div>
-        <div className="flex-1"></div>
+        <div className="h-1/4 p-4 overflow-y-auto text-center">
+          <h2 className="text-lg text-black mb-2">Card List</h2>
+          <table className="border-black border-solid border-2">
+            <tr className="border-black border-solid border-2">
+              <th className="border-black border-solid border-2">id</th>
+              <th className="border-black border-solid border-2">condition</th>
+              <th className="border-black border-solid border-2">group</th>
+              <th className="border-black border-solid border-2">member</th>
+              <th className="border-black border-solid border-2">album</th>
+              <th className="border-black border-solid border-2">version</th>
+              <th className="border-black border-solid border-2">user</th>
+            </tr>
+            {cards.map((card) => (
+              <tr className="border-black border-solid border-2">
+                <td className="border-black border-solid border-2">
+                  {card._id}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {card.condition}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {card.group}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {card.member}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {card.album}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {card.version}
+                </td>
+                <td className="border-black border-solid border-2">
+                  {card.user}
+                </td>
+              </tr>
+            ))}
+          </table>
+        </div>
       </div>
       <button
         onClick={handleLogout}

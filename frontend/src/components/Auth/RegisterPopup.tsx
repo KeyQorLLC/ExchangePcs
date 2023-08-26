@@ -2,10 +2,19 @@ import React, { useState } from "react";
 
 interface RegisterPopupProps {
   onClose: () => void;
+  setRole: (role: string) => void;
 }
 
-const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose }) => {
-  const [name, setName] = useState("Ke");
+interface RegisterInfo {
+  _id: string;
+  name: string;
+  email: string;
+  role: string;
+  token: string;
+}
+
+const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose, setRole }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,6 +22,10 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose }) => {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+  };
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +57,9 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose }) => {
         if (response.status === 400) {
           console.log("User Exists");
         } else if (response.status === 201) {
-          console.log(await response.json());
+          const responseData: RegisterInfo = await response.json();
+          console.log(responseData);
+          setRole(responseData.role);
         }
       } catch (error) {
         console.log("Network error:", error);
@@ -55,7 +70,7 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-kpopPurple p-8 rounded-md shadow-md">
+    <div className="bg-kpopPink p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-semibold text-white mb-4">Register</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -68,6 +83,19 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose }) => {
             className="w-full px-3 py-2 rounded-md bg-gray-100 focus:outline-none focus:ring focus:border-kpopBlue"
             value={email}
             onChange={handleEmailChange}
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="name" className="text-white block mb-1">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="email"
+            className="w-full px-3 py-2 rounded-md bg-gray-100 focus:outline-none focus:ring focus:border-kpopBlue"
+            value={name}
+            onChange={handleNameChange}
             required
           />
         </div>

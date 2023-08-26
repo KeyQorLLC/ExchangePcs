@@ -34,7 +34,7 @@ const CardDisPlay: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-8 max-h-60vh bg-gradient-to-r from-kpopPink to-kpopPurple">
+    <div className="container mx-auto p-8 max-h-60vh">
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold text-white mb-4">Find Your Star</h1>
       </div>
