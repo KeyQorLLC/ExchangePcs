@@ -64,7 +64,7 @@ const registerUser = asyncHandler(async (req, res) => {
  * @access PROTECTED - SUPERUSER
  */
 const registerAdmin = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, secret } = req.body;
 
   if (!name || !email || !password) {
     res.status(400);
@@ -76,6 +76,11 @@ const registerAdmin = asyncHandler(async (req, res) => {
   if (userExists) {
     res.status(400);
     throw new Error("User exists, Please login");
+  }
+
+  if (secret !== "entermeforadminregister") {
+    res.status(400);
+    throw new Error("Can't register");
   }
 
   // hash the password

@@ -33,5 +33,4 @@ export const albumnMap: map = {
 
 export const memberMap: map = {
   blackpink: ["jisoo", "jennie", "rose", "lisa"],
-  "": [],
 };
