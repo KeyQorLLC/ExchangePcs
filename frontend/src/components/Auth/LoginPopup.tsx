@@ -41,6 +41,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
         const responseData: LoginInfo = await response.json();
         console.log(responseData);
         setRole(responseData.role);
+        sessionStorage.setItem("KeyqorUserId", responseData._id);
         sessionStorage.setItem("KeyqorKey", responseData.token);
         onClose();
       } else if (response.status === 400) {

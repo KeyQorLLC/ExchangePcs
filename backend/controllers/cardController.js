@@ -25,8 +25,8 @@ const postCard = asyncHandler(async (req, res) => {
     group: group,
     member: member,
     album: album,
-    version: version,
-    description: description,
+    version: version || "not specified",
+    description: description || "no description from user",
     user: user,
   });
   if (card) {

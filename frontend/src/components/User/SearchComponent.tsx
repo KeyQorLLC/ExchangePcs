@@ -71,7 +71,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
           }
         >
           <option value="">Select Album</option>
-          {/* Options for album */}
           {searchCriteria.group &&
             albumnMap[searchCriteria.group].map((album) => (
               <option key={album} value={album}>

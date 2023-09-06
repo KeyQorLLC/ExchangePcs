@@ -2,7 +2,7 @@ interface map {
   [key: string]: Array<string>;
 }
 
-export const groupList = ["blackpink"];
+export const groupList = ["blackpink", "gidle", "itzy", "ive", "newjeans"];
 
 export const albumnMap: map = {
   blackpink: [
@@ -29,8 +29,55 @@ export const albumnMap: map = {
     "pink venom",
     "born pink",
   ],
+  gidle: [
+    "latata",
+    "oh my god",
+    "i made",
+    "heat",
+    "i trust",
+    "i burn",
+    "i am",
+    "i love",
+    "i feel",
+    "dumdi dumdi",
+    "i never die",
+  ],
+  itzy: [
+    "itz different",
+    "itz icy",
+    "itz me",
+    "not shy",
+    "trust me",
+    "guess who",
+    "in the morning",
+    "break ice",
+    "joyful moment",
+    "whatz itzy",
+    "crazy in love",
+    "itz itzy",
+    "voltage",
+    "checkmate",
+    "blah blah blah",
+    "cheshire",
+    "kill my doubt",
+    "ringo",
+  ],
+  ive: [
+    "eleven",
+    "love dive",
+    "after like",
+    "kitsch",
+    "ive ive",
+    "wave",
+    "ive pepsi",
+  ],
+  newjeans: ["new jeans", "ditto", "omg", "tell me", "zero", "get up"],
 };
 
 export const memberMap: map = {
   blackpink: ["jisoo", "jennie", "rose", "lisa"],
+  gidle: ["miyeon", "minnie", "soyeon", "yuqi", "shuhua"],
+  itzy: ["yeji", "lia", "ryujin", "chaeryeong", "yuna"],
+  ive: ["gaeul", "yujin", "rei", "wonyoung", "liz", "leeseo"],
+  newjeans: ["minji", "hanni", "danielle", "haerin", "hyein"],
 };
