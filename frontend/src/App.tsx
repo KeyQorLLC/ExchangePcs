@@ -11,15 +11,16 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<UserDashboard />} />
           <Route
-            path="/"
+            path="/admin"
             element={
               role === "" ? (
                 <HomeView setRole={setRole} />
               ) : role === "Admin" ? (
                 <AdminDashboard setRole={setRole} />
               ) : (
-                <UserDashboard setRole={setRole} />
+                <HomeView setRole={setRole} />
               )
             }
           />

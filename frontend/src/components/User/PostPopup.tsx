@@ -137,17 +137,6 @@ const PostPoptup: React.FC<PostPopupProps> = ({ onClose }) => {
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="verison" className="text-white block mb-1">
-            Version:
-          </label>
-          <select
-            id="version"
-            className="w-full px-3 py-2 rounded-md bg-gray-100 focus:outline-none focus:ring focus:border-kpopBlue"
-            value={version}
-            onChange={(e) => setVersion(e.target.value)}
-          ></select>
-        </div>
-        <div className="mb-4">
           <label htmlFor="description" className="text-white block mb-1">
             Description:
           </label>

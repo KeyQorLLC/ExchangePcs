@@ -6,7 +6,7 @@ interface DashboardPageProps {
   setRole: (role: string) => void;
 }
 
-const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
+const UserDashboard: React.FC = () => {
   const [isPostPopupOpen, setPostPopupOpen] = useState(false);
 
   const openPostPopup = () => {
@@ -17,9 +17,11 @@ const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
     setPostPopupOpen(false);
   };
 
+  /*
   const handleLogout = () => {
     setRole("");
   };
+  */
 
   return (
     <>
@@ -31,17 +33,21 @@ const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
         >
           Post
         </button>
+        {/*
         <button
           onClick={handleLogout}
           className="absolute bottom-4 right-4 px-6 py-3 text-xl bg-kpopBlue text-white rounded-md shadow-md hover:bg-kpopYellow"
         >
           Logout
         </button>
+        */}
       </div>
-      {isPostPopupOpen && (
+      {isPostPopupOpen ? (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
           <PostPoptup onClose={closePostPopup} />
         </div>
+      ) : (
+        <></>
       )}
     </>
   );

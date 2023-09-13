@@ -102,43 +102,6 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
       <div></div>
       <div className="flex mt-4 justify-around">
         <div className="h-1/4 p-4 overflow-y-auto text-center">
-          <h2 className="text-lg text-black mb-2">User List</h2>
-          <table className="border-black border-solid border-2">
-            <tr className="border-black border-solid border-2">
-              <th className="border-black border-solid border-2">id</th>
-              <th className="border-black border-solid border-2">name</th>
-              <th className="border-black border-solid border-2">email</th>
-              <th className="border-black border-solid border-2">role</th>
-              <th className="border-black border-solid border-2">action</th>
-            </tr>
-            {users.map((user) => (
-              <tr className="border-black border-solid border-2">
-                <td className="border-black border-solid border-2">
-                  {user._id}
-                </td>
-                <td className="border-black border-solid border-2">
-                  {user.name}
-                </td>
-                <td className="border-black border-solid border-2">
-                  {user.email}
-                </td>
-                <td className="border-black border-solid border-2">
-                  {user.role}
-                </td>
-                <button
-                  onClick={() => handleDeleteClick(user)}
-                  className="m-2 px-4 py-2 mt-2 text-sm bg-black text-white rounded-md shadow-md hover:bg-kpopYellow"
-                  hidden={user.role === "Admin"}
-                  disabled={user.role === "Admin"}
-                >
-                  Delete
-                </button>
-              </tr>
-            ))}
-          </table>
-        </div>
-        <div className="h-1/4 p-4 overflow-y-auto text-center">
-          <h2 className="text-lg text-black mb-2">Card List</h2>
           <table className="border-black border-solid border-2">
             <tr className="border-black border-solid border-2">
               <th className="border-black border-solid border-2">id</th>
@@ -147,7 +110,6 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
               <th className="border-black border-solid border-2">member</th>
               <th className="border-black border-solid border-2">album</th>
               <th className="border-black border-solid border-2">version</th>
-              <th className="border-black border-solid border-2">user</th>
             </tr>
             {cards.map((card) => (
               <tr className="border-black border-solid border-2">
@@ -168,9 +130,6 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
                 </td>
                 <td className="border-black border-solid border-2">
                   {card.version}
-                </td>
-                <td className="border-black border-solid border-2">
-                  {card.user}
                 </td>
               </tr>
             ))}

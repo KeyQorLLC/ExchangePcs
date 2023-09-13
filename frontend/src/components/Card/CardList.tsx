@@ -8,9 +8,7 @@ interface CardData {
   group: string;
   member: string;
   album: string;
-  version: string;
   description: string;
-  user: string;
 }
 
 interface CardListProps {
@@ -28,9 +26,7 @@ const CardList: React.FC<CardListProps> = ({ cards }) => {
           group={card.group}
           member={card.member}
           album={card.album}
-          version={card.version}
           description={card.description}
-          user={card.user}
         />
       ))}
     </div>

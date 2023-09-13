@@ -7,7 +7,6 @@ interface SearchCriteria {
   group: string;
   member: string;
   album: string;
-  version: string;
 }
 
 const CardDisPlay: React.FC = () => {
@@ -21,11 +20,7 @@ const CardDisPlay: React.FC = () => {
           : "&condition=" + searchCriteria.condition
       }${searchCriteria.group === "" ? "" : "&group=" + searchCriteria.group}${
         searchCriteria.member === "" ? "" : "&member=" + searchCriteria.member
-      }${searchCriteria.album === "" ? "" : "&album=" + searchCriteria.album}${
-        searchCriteria.version === ""
-          ? ""
-          : "&version=" + searchCriteria.version
-      }`
+      }${searchCriteria.album === "" ? "" : "&album=" + searchCriteria.album}`
     );
     if (response.status === 200) {
       const data = await response.json();

@@ -10,7 +10,6 @@ interface SearchCriteria {
   group: string;
   member: string;
   album: string;
-  version: string;
 }
 
 const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
@@ -19,7 +18,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
     group: "",
     member: "",
     album: "",
-    version: "",
   });
 
   const handleSearch = () => {
@@ -53,7 +51,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
               group: e.target.value,
               member: "",
               album: "",
-              version: "",
             })
           }
         >
@@ -77,15 +74,6 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
                 {album}
               </option>
             ))}
-        </select>
-        <select
-          className="border rounded p-1 text-kpopPurple"
-          onChange={(e) =>
-            setSearchCriteria({ ...searchCriteria, version: e.target.value })
-          }
-        >
-          <option value="">Select Version</option>
-          {/* Options for version */}
         </select>
         <select
           className="border rounded p-1 text-kpopPurple"

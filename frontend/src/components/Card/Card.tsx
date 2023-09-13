@@ -7,9 +7,7 @@ interface CardProps {
   group: string;
   member: string;
   album: string;
-  version: string;
   description: string;
-  user: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -19,9 +17,7 @@ const Card: React.FC<CardProps> = ({
   group,
   member,
   album,
-  version,
   description,
-  user,
 }) => {
   return (
     <div className="bg-white shadow-md p-4 rounded-md cursor-pointer flex flex-row hover:bg-yellow-100">
@@ -35,9 +31,7 @@ const Card: React.FC<CardProps> = ({
         <p className="text-gray-600 mb-2">Group: {group}</p>
         <p className="text-gray-600 mb-2">Member: {member}</p>
         <p className="text-gray-600 mb-2">Album: {album}</p>
-        <p className="text-gray-600 mb-2">Version: {version}</p>
         <p className="text-gray-600 mb-2">Description: {description}</p>
-        <p className="text-gray-600">Posted by: {user}</p>
       </div>
     </div>
   );

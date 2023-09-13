@@ -21,17 +21,9 @@ const cardSchema = mongoose.Schema({
     type: String,
     required: [true, "Please add the name of the album"],
   },
-  version: {
-    type: String,
-    required: [true, "Please add the version of the album"],
-  },
   description: {
     type: String,
     default: "A card looking for trade",
-  },
-  user: {
-    type: mongoose.ObjectId,
-    required: [true, "Please add the id of the user posting"],
   },
 });
 
