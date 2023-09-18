@@ -6,7 +6,7 @@ interface DashboardPageProps {
   setRole: (role: string) => void;
 }
 
-const UserDashboard: React.FC = () => {
+const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   const [isPostPopupOpen, setPostPopupOpen] = useState(false);
 
   const openPostPopup = () => {
@@ -17,15 +17,14 @@ const UserDashboard: React.FC = () => {
     setPostPopupOpen(false);
   };
 
-  /*
   const handleLogout = () => {
+    sessionStorage.removeItem("KeyqorRole");
     setRole("");
   };
-  */
 
   return (
     <>
-      <div className="bg-gradient-to-r from-kpopPink to-white">
+      <div className="h-screen bg-gradient-to-r from-kpopPink to-white">
         <CardDisplay />
         <button
           onClick={openPostPopup}
@@ -33,14 +32,13 @@ const UserDashboard: React.FC = () => {
         >
           Post
         </button>
-        {/*
+
         <button
           onClick={handleLogout}
           className="absolute bottom-4 right-4 px-6 py-3 text-xl bg-kpopBlue text-white rounded-md shadow-md hover:bg-kpopYellow"
         >
           Logout
         </button>
-        */}
       </div>
       {isPostPopupOpen ? (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">

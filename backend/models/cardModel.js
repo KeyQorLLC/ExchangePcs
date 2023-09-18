@@ -25,6 +25,14 @@ const cardSchema = mongoose.Schema({
     type: String,
     default: "A card looking for trade",
   },
+  user: {
+    type: String,
+    required: [true, "Please add the user id"],
+  },
+  name: {
+    type: String,
+    required: [true, "Please add the user name"],
+  },
 });
 
 module.exports = mongoose.model("Card", cardSchema);

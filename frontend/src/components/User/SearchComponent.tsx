@@ -35,12 +35,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
           }
         >
           <option value="">Select Condition</option>
-          <option value="Mint">Mint</option>
-          <option value="Near Mint">Near Mint</option>
-          <option value="Excellent">Excellent</option>
+          <option value="New">New</option>
+          <option value="Like New">Like New</option>
           <option value="Good">Good</option>
-          <option value="Light Played">Light Played</option>
-          <option value="Played">Played</option>
+          <option value="Fair">Fair</option>
           <option value="Poor">Poor</option>
         </select>
         <select

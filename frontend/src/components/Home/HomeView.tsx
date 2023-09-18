@@ -42,14 +42,12 @@ const HomeView: React.FC<HomeViewProps> = ({ setRole }) => {
         >
           Login
         </button>
-        {/*
-          <button
-            className="px-6 py-3 text-xl bg-kpopPink text-white rounded-md shadow-md hover:bg-white hover:text-yellow-400 transition duration-300"
-            onClick={handleRegisterClick}
-          >
-            Register
-          </button>
-  */}
+        <button
+          className="px-6 py-3 text-xl bg-kpopPink text-white rounded-md shadow-md hover:bg-white hover:text-yellow-400 transition duration-300"
+          onClick={handleRegisterClick}
+        >
+          Register
+        </button>
       </div>
       {isLoginPopupOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">

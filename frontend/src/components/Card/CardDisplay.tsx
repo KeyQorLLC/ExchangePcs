@@ -29,12 +29,12 @@ const CardDisPlay: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-8 max-h-60vh">
+    <div className="container mx-auto p-8">
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold text-white mb-4">Find Your Star</h1>
       </div>
       <SearchComponent onSearch={fetchCard} />
-      <CardList cards={cardData} />
+      <CardList cards={cardData} links={true} />
     </div>
   );
 };

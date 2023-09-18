@@ -18,13 +18,15 @@ const getCards = asyncHandler(async (req, res) => {
  * @access PUBLIC
  */
 const postCard = asyncHandler(async (req, res) => {
-  const { condition, group, member, album, description } = req.body;
+  const { condition, group, member, album, description, user, name } = req.body;
   const card = await Card.create({
-    condition: condition || "default Light Played",
+    condition: condition || "default Good",
     group: group,
     member: member,
     album: album,
     description: description || "no description from user",
+    user: user,
+    name: name,
   });
   if (card) {
     res.status(201).json(card);

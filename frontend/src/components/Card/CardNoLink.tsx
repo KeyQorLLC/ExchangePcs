@@ -12,7 +12,7 @@ interface CardProps {
   name: string;
 }
 
-const Card: React.FC<CardProps> = ({
+const CardNoLink: React.FC<CardProps> = ({
   id,
   imageUrl,
   condition,
@@ -40,13 +40,6 @@ const Card: React.FC<CardProps> = ({
           <p className="mb-2 text-center">{album}</p>
           <p className="mb-2 text-center">Description:</p>
           <p className="mb-2 text-center">{description}</p>
-          <p className="mb-2 text-center">Posted by:</p>
-          <a
-            className="text-kpopBlue text-center cursor-pointer"
-            href={"/user/" + user}
-          >
-            {name}
-          </a>
         </div>
       </div>
       <div className="h-[4%] flex justify-around">
@@ -56,4 +49,4 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-export default Card;
+export default CardNoLink;

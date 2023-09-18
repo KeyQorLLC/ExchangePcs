@@ -14,9 +14,7 @@ interface Card {
   group: string;
   member: string;
   album: string;
-  version: string;
   description: string;
-  user: string;
 }
 
 interface DashboardPageProps {
@@ -26,8 +24,8 @@ interface DashboardPageProps {
 const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [cards, setCards] = useState<Card[]>([]);
-  const [showDeletePopup, setShowDeletePopup] = useState<boolean>(false);
-  const [userToDelete, setUserToDelete] = useState<User | null>(null);
+  //const [showDeletePopup, setShowDeletePopup] = useState<boolean>(false);
+  //const [userToDelete, setUserToDelete] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -46,53 +44,20 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
       const response = await fetch("http://localhost:5000/api/card");
       if (response.status === 200) {
         const data = await response.json();
+        console.log(data);
         setCards(data);
       }
     };
 
     fetchCard();
-    fetchUsers();
+    //fetchUsers();
   }, []);
 
   const handleLogout = () => {
     setRole("");
   };
 
-  const handleDeleteClick = (user: User) => {
-    console.log(user._id);
-    setUserToDelete(user);
-    setShowDeletePopup(true);
-  };
-
-  const handleConfirmDelete = async () => {
-    if (userToDelete) {
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/user/" + userToDelete._id,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (response.status === 200) {
-          console.log("Success");
-        } else if (response.status === 400) {
-          console.log("User not found");
-        }
-      } catch (error) {
-        console.log("Network error:", error);
-      }
-    }
-    setUserToDelete(null);
-    setShowDeletePopup(false);
-  };
-
-  const handleCancelDelete = () => {
-    setUserToDelete(null);
-    setShowDeletePopup(false);
-  };
+  const handleConfirmDelete = async (card: Card) => {};
 
   return (
     <div className="h-screen">
@@ -109,7 +74,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
               <th className="border-black border-solid border-2">group</th>
               <th className="border-black border-solid border-2">member</th>
               <th className="border-black border-solid border-2">album</th>
-              <th className="border-black border-solid border-2">version</th>
+              <th className="border-black border-solid border-2">action</th>
             </tr>
             {cards.map((card) => (
               <tr className="border-black border-solid border-2">
@@ -129,7 +94,9 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
                   {card.album}
                 </td>
                 <td className="border-black border-solid border-2">
-                  {card.version}
+                  <button className="text-white p-1 m-1 rounded-md bg-kpopBlue hover:bg-black">
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -142,7 +109,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
       >
         Logout
       </button>
-      {showDeletePopup && (
+      {/*showDeletePopup && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white rounded-lg p-6">
             <p className="text-lg">
@@ -164,7 +131,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
             </div>
           </div>
         </div>
-      )}
+      )*/}
     </div>
   );
 };
