@@ -1,7 +1,5 @@
 <a name="readme-top"></a>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -57,6 +55,8 @@ npm install
 <!-- CONTACT -->
 
 ## Contact
+
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 Ruike Qiu - rq2046@nyu.edu
 
