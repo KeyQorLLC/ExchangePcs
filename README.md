@@ -91,5 +91,5 @@ Project Link: [https://github.com/KeyQorLLC/ExchangePcs](https://github.com/KeyQ
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
-[Mongo-url]: https://raw.githubusercontent.com/KeyQorLLC/ExchangePcs/9ecb050044a3569332bd206aab5c6dea86ee4614/svg/mongodb.svg
+[Mongo-url]: https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
 [Mongo.db]: https://www.mongodb.com/
