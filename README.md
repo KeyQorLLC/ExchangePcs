@@ -26,36 +26,37 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
-
 ## Getting Started
 
 ### Prerequisites
 
 You need to install nodejs before installing
 
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+npm
+
+```sh
+npm install npm@latest -g
+```
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/KeyQorLLC/ExchangePcs.git
-   ```
-2. Install NPM packages
-   ```sh
-   cd frontend
-   npm install
-   ```
-   ```sh
-   cd backend
-   npm install
-   ```
+Clone the repo
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```sh
+git clone https://github.com/KeyQorLLC/ExchangePcs.git
+```
+
+Install NPM packages
+
+```sh
+cd frontend
+npm install
+```
+
+```sh
+cd backend
+npm install
+```
 
 <!-- CONTACT -->
 
@@ -64,8 +65,6 @@ You need to install nodejs before installing
 Ruike Qiu - rq2046@nyu.edu
 
 Project Link: [https://github.com/KeyQorLLC/ExchangePcs](https://github.com/KeyQorLLC/ExchangePcs)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
 [contributors-url]: https://github.com/KeyQorLLC/ExchangePcs/graphs/contributors
