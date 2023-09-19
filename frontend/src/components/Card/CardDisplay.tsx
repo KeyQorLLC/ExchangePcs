@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
 import SearchComponent from "../User/SearchComponent";
+import { baseURL } from "../../lib/inedx";
 
 interface SearchCriteria {
   condition: string;
@@ -21,7 +22,7 @@ const CardDisPlay: React.FC = () => {
   useEffect(() => {
     const fetchCard = async (searchCriteria: SearchCriteria) => {
       const response = await fetch(
-        `http://localhost:5000/api/card?${
+        `${baseURL}/api/card?${
           searchCriteria.condition === ""
             ? ""
             : "&condition=" + searchCriteria.condition
