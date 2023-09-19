@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardList from "../Card/CardList";
-import { baseURL } from "../../lib/inedx";
 
 interface SearchCriteria {
   user: string;
@@ -13,9 +12,7 @@ const Userpage: React.FC = () => {
 
   useEffect(() => {
     const fetchCard = async (searchCriteria: SearchCriteria) => {
-      const response = await fetch(
-        `${baseURL}/api/card?user=${searchCriteria.user}`
-      );
+      const response = await fetch(`/api/card?user=${searchCriteria.user}`);
       if (response.status === 200) {
         const data = await response.json();
         setCardData(data);

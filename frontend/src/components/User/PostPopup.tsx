@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { albumnMap, groupList, memberMap } from "./mapping";
-import { baseURL } from "../../lib/inedx";
 
 interface PostPopupProps {
   onClose: () => void;
@@ -29,7 +28,7 @@ const PostPoptup: React.FC<PostPopupProps> = ({ onClose }) => {
       formData.append("description", description);
       formData.append("user", String(sessionStorage.getItem("KeyqorUserId")));
       formData.append("name", String(sessionStorage.getItem("KeyqorUsername")));
-      const response = await fetch(`${baseURL}/api/card`, {
+      const response = await fetch(`/api/card`, {
         method: "POST",
         body: formData,
       });

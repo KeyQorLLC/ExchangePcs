@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { baseURL } from "../../lib/inedx";
 
 /*
 interface User {
@@ -48,7 +47,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
     */
 
     const fetchCard = async () => {
-      const response = await fetch(`${baseURL}/api/card`);
+      const response = await fetch(`/api/card`);
       if (response.status === 200) {
         const data = await response.json();
         console.log(data);

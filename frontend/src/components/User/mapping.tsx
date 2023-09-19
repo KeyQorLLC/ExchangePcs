@@ -2,7 +2,14 @@ interface map {
   [key: string]: Array<string>;
 }
 
-export const groupList = ["blackpink", "gidle", "itzy", "ive", "newjeans"];
+export const groupList = [
+  "blackpink",
+  "gidle",
+  "itzy",
+  "ive",
+  "newjeans",
+  "seventeen",
+];
 
 export const albumnMap: map = {
   blackpink: [
@@ -72,6 +79,37 @@ export const albumnMap: map = {
     "ive pepsi",
   ],
   newjeans: ["new jeans", "ditto", "omg", "tell me", "zero", "get up"],
+  seventeen: [
+    "17 carat",
+    "boys be",
+    "love and letter",
+    "going seventeen",
+    "al1",
+    "teen age",
+    "director cut",
+    "we make you",
+    "you make my day",
+    "you made my dawn",
+    "happy ending",
+    "hit",
+    "an ode",
+    "fallin flower",
+    "heng garae",
+    "24h",
+    "semicolon",
+    "not alone",
+    "your choice",
+    "attacca",
+    "power of love",
+    "darl ing",
+    "face the sun",
+    "sector 17",
+    "world",
+    "dream",
+    "fml",
+    "always yours",
+    "dirty dancing",
+  ],
 };
 
 export const memberMap: map = {
@@ -80,4 +118,19 @@ export const memberMap: map = {
   itzy: ["yeji", "lia", "ryujin", "chaeryeong", "yuna"],
   ive: ["gaeul", "yujin", "rei", "wonyoung", "liz", "leeseo"],
   newjeans: ["minji", "hanni", "danielle", "haerin", "hyein"],
+  seventeen: [
+    "s coups",
+    "jeonghan",
+    "joshua",
+    "jun",
+    "hoshi",
+    "wonwoo",
+    "woozi",
+    "dk",
+    "mingyu",
+    "the8",
+    "seungkwan",
+    "vernon",
+    "dino",
+  ],
 };

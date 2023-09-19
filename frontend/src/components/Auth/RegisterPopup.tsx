@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { baseURL } from "../../lib/inedx";
 
 interface RegisterPopupProps {
   onClose: () => void;
@@ -48,7 +47,7 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose, setRole }) => {
       console.log("Password:", password);
       console.log("Confirm Password:", confirmPassword);
       try {
-        const response = await fetch(`${baseURL}/api/user`, {
+        const response = await fetch(`/api/user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

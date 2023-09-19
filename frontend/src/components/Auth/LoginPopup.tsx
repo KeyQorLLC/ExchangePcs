@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { baseURL } from "../../lib/inedx";
 
 interface LoginPopupProps {
   onClose: () => void;
@@ -32,7 +31,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await fetch(`${baseURL}/api/user/login`, {
+      const response = await fetch(`/api/user/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
