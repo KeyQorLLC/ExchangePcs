@@ -20,8 +20,6 @@ const CardNoLink: React.FC<CardProps> = ({
   member,
   album,
   description,
-  user,
-  name,
 }) => {
   return (
     <div className="w-[200px] h-[300px] rounded-md">

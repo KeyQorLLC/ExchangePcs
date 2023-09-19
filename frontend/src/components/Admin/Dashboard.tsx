@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from "../../lib/inedx";
 
+/*
 interface User {
   _id: number;
   name: string;
   email: string;
   role: string;
 }
+*/
 
 interface Card {
   _id: string;
@@ -24,13 +26,14 @@ interface DashboardPageProps {
 }
 
 const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
-  const [users, setUsers] = useState<User[]>([]);
+  //const [users, setUsers] = useState<User[]>([]);
   const [cards, setCards] = useState<Card[]>([]);
   const navigate = useNavigate();
   //const [showDeletePopup, setShowDeletePopup] = useState<boolean>(false);
   //const [userToDelete, setUserToDelete] = useState<User | null>(null);
 
   useEffect(() => {
+    /*
     const fetchUsers = async () => {
       const response = await fetch("http://localhost:5000/api/user", {
         method: "GET",
@@ -42,6 +45,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
       const data = await response.json();
       setUsers(data);
     };
+    */
 
     const fetchCard = async () => {
       const response = await fetch(`${baseURL}/api/card`);
@@ -61,7 +65,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
     navigate("/");
   };
 
-  const handleConfirmDelete = async (card: Card) => {};
+  //const handleConfirmDelete = async (card: Card) => {};
 
   return (
     <div className="h-screen">
