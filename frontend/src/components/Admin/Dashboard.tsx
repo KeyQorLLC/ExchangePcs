@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface User {
   _id: number;
@@ -24,6 +25,7 @@ interface DashboardPageProps {
 const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   const [users, setUsers] = useState<User[]>([]);
   const [cards, setCards] = useState<Card[]>([]);
+  const navigate = useNavigate();
   //const [showDeletePopup, setShowDeletePopup] = useState<boolean>(false);
   //const [userToDelete, setUserToDelete] = useState<User | null>(null);
 
@@ -55,6 +57,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
 
   const handleLogout = () => {
     setRole("");
+    navigate("/");
   };
 
   const handleConfirmDelete = async (card: Card) => {};

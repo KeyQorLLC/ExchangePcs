@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { albumnMap, groupList, memberMap } from "./mapping";
 
 interface SearchComponentProps {
-  onSearch: (criteria: SearchCriteria) => void;
+  setCriteria: (criteria: SearchCriteria) => void;
 }
 
 interface SearchCriteria {
@@ -12,7 +12,7 @@ interface SearchCriteria {
   album: string;
 }
 
-const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
+const SearchComponent: React.FC<SearchComponentProps> = ({ setCriteria }) => {
   const [searchCriteria, setSearchCriteria] = useState<SearchCriteria>({
     condition: "",
     group: "",
@@ -21,7 +21,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
   });
 
   const handleSearch = () => {
-    onSearch(searchCriteria);
+    setCriteria(searchCriteria);
   };
 
   return (

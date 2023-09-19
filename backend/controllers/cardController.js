@@ -18,8 +18,10 @@ const getCards = asyncHandler(async (req, res) => {
  * @access PUBLIC
  */
 const postCard = asyncHandler(async (req, res) => {
-  const { condition, group, member, album, description, user, name } = req.body;
+  const { condition, group, member, album, description, user, name, imageUrl } =
+    req.body;
   const card = await Card.create({
+    imageUrl: imageUrl,
     condition: condition || "default Good",
     group: group,
     member: member,

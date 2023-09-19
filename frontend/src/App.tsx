@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeView from "./components/Home/HomeView";
 import AdminDashboard from "./components/Admin/Dashboard";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UserDashboard from "./components/User/Dashboard";
 import Userpage from "./components/User/Userpage";
 
@@ -12,15 +12,18 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<HomeView setRole={setRole} />} />
           <Route
-            path="/"
+            path="/dashboard"
+            element={<UserDashboard setRole={setRole} />}
+          />
+          <Route
+            path="/admin"
             element={
-              (sessionStorage.getItem("KeyqorRole") || role) === "" ? (
-                <HomeView setRole={setRole} />
-              ) : (sessionStorage.getItem("KeyqorRole") || role) === "Admin" ? (
+              role === "Admin" ? (
                 <AdminDashboard setRole={setRole} />
               ) : (
-                <UserDashboard setRole={setRole} />
+                <>Unauthorized</>
               )
             }
           />

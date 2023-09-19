@@ -10,16 +10,31 @@ connectDB();
 
 const app = express();
 
+// middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(errorHandler);
+
+const multer = require("multer");
+const uuid = require("uuid").v4;
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "uploads/");
+  },
+  filename: (req, file, callback) => {
+    callback(null, `${uuid()}.${file.mimetype.split("/")[1]}`);
+  },
+});
+const upload = multer({ storage, limits: { fileSize: 1000000 } });
 
 // routes
 app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/card", require("./routes/cardRoutes"));
-
-// middleware
-app.use(errorHandler);
+app.post("/upload", upload.single("image"), (req, res) => {
+  console.log(req.body);
+  res.json({ status: "success" });
+});
 
 // connect to port
 app.listen(port, () => console.log(`Server started on port ${port}`));

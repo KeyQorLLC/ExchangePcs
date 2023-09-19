@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginPopupProps {
   onClose: () => void;
@@ -17,6 +18,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -42,9 +44,13 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
         setRole(responseData.role);
         sessionStorage.setItem("KeyqorUserId", responseData._id);
         sessionStorage.setItem("KeyqorUsername", responseData.name);
-        sessionStorage.setItem("KeyqorRole", responseData.role);
         sessionStorage.setItem("KeyqorKey", responseData.token);
         onClose();
+        if (responseData.role === "Basic") {
+          navigate("/dashboard");
+        } else if (responseData.role === "Admin") {
+          navigate("/admin");
+        }
       } else if (response.status === 400) {
         setPasswordsMatch(false);
       }

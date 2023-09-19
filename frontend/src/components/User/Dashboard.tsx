@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CardDisplay from "../Card/CardDisplay";
 import PostPoptup from "./PostPopup";
+import { useNavigate } from "react-router-dom";
 
 interface DashboardPageProps {
   setRole: (role: string) => void;
@@ -8,6 +9,7 @@ interface DashboardPageProps {
 
 const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   const [isPostPopupOpen, setPostPopupOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openPostPopup = () => {
     setPostPopupOpen(true);
@@ -18,8 +20,8 @@ const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("KeyqorRole");
     setRole("");
+    navigate("/");
   };
 
   return (

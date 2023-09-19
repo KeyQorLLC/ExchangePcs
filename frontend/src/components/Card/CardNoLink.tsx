@@ -27,11 +27,7 @@ const CardNoLink: React.FC<CardProps> = ({
     <div className="w-[200px] h-[300px] rounded-md">
       <div className="relative w-[100%] h-[95%] transitiontransform preserve-3d perspective hover:rotate-y-180">
         <div className="w-[100%] h-[100%] absolute backface-hidden">
-          <img
-            src={"/" + group + ".jpg"}
-            alt={id}
-            className="w-[100%] h-[100%]"
-          />
+          <img src={imageUrl} alt={id} className="w-[100%] h-[100%]" />
         </div>
         <div className="bg-black text-white w-[100%] h-[100%] absolute rotate-y-180 backface-hidden flex flex-col items-center justify-center">
           <p className="mb-2 text-center">Group: {group}</p>

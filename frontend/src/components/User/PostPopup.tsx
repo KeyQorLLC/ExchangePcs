@@ -6,6 +6,7 @@ interface PostPopupProps {
 }
 
 const PostPoptup: React.FC<PostPopupProps> = ({ onClose }) => {
+  const [file, setFile] = useState<File>();
   const [condition, setCondition] = useState("");
   const [group, setGroup] = useState("");
   const [member, setMember] = useState("");
@@ -14,21 +15,22 @@ const PostPoptup: React.FC<PostPopupProps> = ({ onClose }) => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (!file || !condition || !group || !member || !album) {
+      return;
+    }
     try {
+      const formData = new FormData();
+      formData.append("image", file);
+      formData.append("condition", condition);
+      formData.append("group", group);
+      formData.append("member", member);
+      formData.append("album", album);
+      formData.append("description", description);
+      formData.append("user", String(sessionStorage.getItem("KeyqorUserId")));
+      formData.append("name", String(sessionStorage.getItem("KeyqorUsername")));
       const response = await fetch("http://localhost:5000/api/card", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          condition,
-          group,
-          member,
-          album,
-          description,
-          user: sessionStorage.getItem("KeyqorUserId"),
-          name: sessionStorage.getItem("KeyqorUsername"),
-        }),
+        body: formData,
       });
 
       if (response.status === 201) {
@@ -46,6 +48,21 @@ const PostPoptup: React.FC<PostPopupProps> = ({ onClose }) => {
     <div className="bg-kpopPink p-8 rounded-md shadow-md">
       <h2 className="text-2xl font-semibold text-white mb-4">Post your card</h2>
       <form className="grid grid-cols-3 gap-4">
+        <div className="mb-4">
+          <label htmlFor="image" className="text-white block mb-1">
+            Photo: {file?.name}
+          </label>
+          <input
+            id="image"
+            type="file"
+            onChange={(e) => {
+              if (e.target.files) {
+                setFile(e.target.files[0]);
+              }
+            }}
+            required
+          />
+        </div>
         <div className="mb-4">
           <label htmlFor="condition" className="text-white block mb-1">
             Condition:
