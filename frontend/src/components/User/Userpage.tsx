@@ -12,7 +12,9 @@ const Userpage: React.FC = () => {
 
   useEffect(() => {
     const fetchCard = async (searchCriteria: SearchCriteria) => {
-      const response = await fetch(`/api/card?user=${searchCriteria.user}`);
+      const response = await fetch(
+        `http://localhost:5000/api/card?user=${searchCriteria.user}`
+      );
       if (response.status === 200) {
         const data = await response.json();
         setCardData(data);

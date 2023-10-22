@@ -17,16 +17,7 @@ const App: React.FC = () => {
             path="/dashboard"
             element={<UserDashboard setRole={setRole} />}
           />
-          <Route
-            path="/admin"
-            element={
-              role === "Admin" ? (
-                <AdminDashboard setRole={setRole} />
-              ) : (
-                <>Unauthorized</>
-              )
-            }
-          />
+          <Route path="/admin" element={<AdminDashboard setRole={setRole} />} />
           <Route path="/user/:userid" element={<Userpage />} />
         </Routes>
       </BrowserRouter>

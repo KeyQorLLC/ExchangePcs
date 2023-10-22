@@ -37,6 +37,19 @@ const postCard = asyncHandler(async (req, res) => {
     throw new Error("Invalid data");
   }
 });
+// const deleteCard = asyncHandler(async (req, res) => {
+//   const { id } = req.body;
+//   if (!id) {
+//     res.status(400);
+//     throw new Error("Invalid Request");
+//   }
+//   const card = await Card.findByIdAndDelete(id);
+//   if (!card) {
+//     res.status(400);
+//     throw new Error("Invalid Request");
+//   }
+//   res.status(200).json(card);
+// });
 
 module.exports = {
   getCards,

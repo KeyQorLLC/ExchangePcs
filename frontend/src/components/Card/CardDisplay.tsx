@@ -21,7 +21,7 @@ const CardDisPlay: React.FC = () => {
   useEffect(() => {
     const fetchCard = async (searchCriteria: SearchCriteria) => {
       const response = await fetch(
-        `/api/card?${
+        `http://localhost:5000/api/card?${
           searchCriteria.condition === ""
             ? ""
             : "&condition=" + searchCriteria.condition
@@ -44,7 +44,7 @@ const CardDisPlay: React.FC = () => {
       <div className="flex justify-center">
         <h1 className="text-4xl font-bold text-white mb-4">Find Your Star</h1>
       </div>
-      <SearchComponent setCriteria={setSearchCriteria} />
+      <SearchComponent setSearchCriteria={setSearchCriteria} />
       <CardList cards={cardData} links={true} />
     </div>
   );

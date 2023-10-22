@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CardDisplay from "../Card/CardDisplay";
-import PostPoptup from "./PostPopup";
+import PostPopup from "./PostPopup";
 import { useNavigate } from "react-router-dom";
 
 interface DashboardPageProps {
@@ -44,7 +44,7 @@ const UserDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
       </div>
       {isPostPopupOpen ? (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-          <PostPoptup onClose={closePostPopup} />
+          <PostPopup onClose={closePostPopup} />
         </div>
       ) : (
         <></>

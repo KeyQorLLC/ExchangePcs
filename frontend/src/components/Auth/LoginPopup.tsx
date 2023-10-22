@@ -31,7 +31,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await fetch(`/api/user/login`, {
+      const response = await fetch(`http://localhost:5000/api/user/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,6 +40,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ onClose, setRole }) => {
       });
 
       if (response.status === 200) {
+        console.log(response);
         const responseData: LoginInfo = await response.json();
         setRole(responseData.role);
         sessionStorage.setItem("KeyqorUserId", responseData._id);

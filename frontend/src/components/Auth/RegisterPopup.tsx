@@ -47,7 +47,7 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ onClose, setRole }) => {
       console.log("Password:", password);
       console.log("Confirm Password:", confirmPassword);
       try {
-        const response = await fetch(`/api/user`, {
+        const response = await fetch(`http://localhost:5000/api/user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -47,7 +47,7 @@ const AdminDashboard: React.FC<DashboardPageProps> = ({ setRole }) => {
     */
 
     const fetchCard = async () => {
-      const response = await fetch(`/api/card`);
+      const response = await fetch(`http://localhost:5000/api/card`);
       if (response.status === 200) {
         const data = await response.json();
         console.log(data);
